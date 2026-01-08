@@ -1,0 +1,823 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, sans-serif;
+
+}
+
+
+
+html,
+body {
+  height: 100%;
+}
+
+
+body {
+  margin: 0;
+  background: #000;
+  color: white;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 16px;
+  gap: 12px;
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 10px;
+}
+
+/* Sidebar container */
+.sidebar {
+  width: 340px;
+  background: #121212;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* keeps rounded corners clean */
+}
+
+/* Top row: "Your Library" + plus */
+.library-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px;
+}
+
+.library-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* Plus button */
+.library-add {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.library-add:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Scroll area for cards (footer stays at bottom) */
+.sidebar-scroll {
+  flex: 1;
+  overflow: auto;
+  padding: 6px 0 10px;
+  overflow-x: hidden;
+}
+
+/* Cards */
+.library-card {
+  background: #242424;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 10px 12px;
+  color: #fff;
+  width: auto;
+  max-width: 100%;
+}
+
+.card-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.card-subtitle {
+  margin: 0 0 14px;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-btn {
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #ffffff;
+  color: #000;
+}
+
+/* Footer links + language button */
+.sidebar-footer {
+  padding: 14px 14px 16px;
+  background: #121212;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 11px;
+}
+
+.footer-links a {
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.cookies-only {
+  display: inline-block;
+  margin-top: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lang-btn {
+  margin-top: 18px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  height: 80px;
+  flex-shrink: 0;
+  background-color: rgb(52, 66, 126);
+}
+
+@media (max-width: 600px) {
+  .player-left {
+    display: none;
+  }
+}
+
+input[type="range"] {
+  width: 100%;
+  max-width: 300px;
+}
+
+.main-content {
+  background-color: rgb(126, 52, 126);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.top-left {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  /* take equal space on the left */
+  justify-content: flex-start;
+}
+
+.top-left svg {
+  height: 28px;
+  width: auto;
+
+}
+
+.home-btn {
+  background: #1f1f1f;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  color: #b3b3b3;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+
+}
+
+.home-btn svg path {
+  fill: currentColor;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+  height: 45px;
+  padding: 0 14px;
+  background: #1f1f1f;
+  border-radius: 999px;
+  color: #b3b3b3;
+  flex: 0 0 auto;
+  width: 420px;
+
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 17px;
+  width: 100%;
+
+
+}
+
+.search input::placeholder {
+  color: #b3b3b3;
+}
+
+.search:hover,
+.search:focus-within {
+  color: #ffffff;
+}
+
+.search-icon path {
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+
+.top-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  /* take equal space on the right */
+  margin-left: 0;
+  /* remove the auto-push */
+  justify-content: flex-end;
+}
+
+.ExplorePremium {
+  background-color: #fff;
+  color: #000;
+  /* <-- this is the main fix */
+  height: 32px;
+  /* stays within 64px topbar */
+  padding: 0 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.InstallApp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 32px;
+  /* match ExplorePremium height */
+  padding: 0 12px;
+  border-radius: 999px;
+
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  /* prevents text from adding extra vertical space */
+  white-space: nowrap;
+  background-color: white;
+  color: black;
+}
+
+.InstallApp svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  display: block;
+  /* avoids baseline “drop” */
+}
+
+.profile {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #4aa3ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #0b0b0b;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  box-shadow: 0 0 0 4px #1f1f1f;
+  /* dark ring like the screenshot */
+  cursor: pointer;
+  user-select: none;
+}
+
+.top-center {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 0;
+  background: #1f1f1f;
+  color: #e5e5e5;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+}
+
+.home-btn:hover {
+  background: #2a2a2a;
+}
+
+.home-btn svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.sidebar {
+  background-color: #121212;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  color: white;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.sidebar h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.sidebar svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  background-color: none;
+  color: white;
+}
+
+.library-add {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+/* Keep card button background */
+.card-btn {
+  background: #ffffff;
+  color: #000;
+}
+
+.main-content {
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #121212;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.card {
+  width: 180px;
+  height: 230px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #181818;
+  transition: background 0.2s ease;
+}
+
+.card:hover {
+  background: #282828;
+}
+
+.card-image {
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+}
+.card:hover .play-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: #b3b3b3;
+  line-height: 1.4;
+}
+
+.madeforyou {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+.show-all-btn {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+
+.show-all-btn:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.section:hover .show-all-btn {
+  color: #ffffff;
+}
+.play-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  background-color: #f5f5f5;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: black;
+  font-size: 18px;
+
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(8px) scale(0.95);
+  transition: all 0.2s ease;
+
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+.card:hover .play-btn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.play-btn:hover {
+  background-color: #ffffff;
+  transform: scale(1.05);
+}
+.card-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.card {
+  flex-shrink: 0;
+}
+.card-row::-webkit-scrollbar {
+  display: none;
+}
+.card-row {
+  scrollbar-width: none;
+}
+.row-wrapper {
+  position: relative;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(6px);
+
+  color: #fff;
+  border: none;
+
+  font-size: 18px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  z-index: 10;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+.row-wrapper:hover .scroll-btn {
+  opacity: 1;
+}
+
+.scroll-btn:hover {
+  background: rgba(35, 35, 35, 0.8);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.scroll-btn.left {
+  left: -18px;
+}
+
+.scroll-btn.right {
+  right: -18px;
+}
+.scroll-btn.right svg {
+  transform: scaleX(-1);
+}
+.spotify-floating {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 420px);
+  height: 80px;
+  background: #181818;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  overflow: hidden;
+  z-index: 9999;
+  display: none; /* hidden until play */
+}
+
+.spotify-floating iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 12px;
+  }
+}
+.spotify-player {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 420px;
+  z-index: 999;
+  border-radius: 14px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .card {
+    min-width: 140px;
+  }
+
+  .card img {
+    border-radius: 10px;
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+  }
+}
+@media (max-width: 768px) {
+
+  /* 1️⃣ Remove home button on mobile */
+  .home-btn {
+    display: none;
+  }
+
+  /* 2️⃣ Topbar layout fix */
+  .topbar {
+    gap: 10px;
+    padding: 8px 10px;
+  }
+
+  /* 3️⃣ Logo gets ~25% */
+  .top-left {
+    flex: 0 0 25%;
+    max-width: 25%;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Optional: slightly shrink logo if needed */
+  .top-left svg {
+    width: 100%;
+    height: auto;
+    max-height: 28px;
+  }
+
+  /* 4️⃣ Search area gets ~75% */
+  .top-center {
+    flex: 1;
+    min-width: 0; /* VERY important */
+    max-width: 75%;
+  }
+
+  .search {
+    width: 100%;
+    max-width: none;
+  }
+
+  .search input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  /* 5️⃣ Remove right-side buttons on mobile */
+  .ExplorePremium,
+  .InstallApp,
+  .notification {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+
+  /* Completely remove right side */
+  .top-right {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+
+  .topbar {
+    display: flex;
+    align-items: center;
+  }
+
+  .top-left {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .top-center {
+    flex: 1;
+    min-width: 0; /* CRITICAL */
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .search input {
+    width: 100%;
+  }
+}
+/* ===============================
+   iPad / Tablet layout fix ONLY
+   =============================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* Sidebar becomes compact */
+  .sidebar {
+    width: 200px;          /* was too large */
+    min-width: 200px;
+    padding: 12px;
+  }
+
+  /* Reduce spacing inside sidebar */
+  .sidebar .library-card {
+    padding: 12px;
+  }
+
+  .sidebar h3 {
+    font-size: 14px;
+  }
+
+  .sidebar p {
+    font-size: 12px;
+  }
+
+  .sidebar button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* Main content gets more room */
+  .main-content {
+    width: calc(100% - 200px);
+    padding-left: 16px;
+  }
+
+  /* Cards fit better on iPad */
+  .card {
+    min-width: 150px;
+  }
+
+  /* Header spacing refinement */
+  .main-header {
+    padding-right: 8px;
+  }
+}
+/* ===============================
+   iPad topbar final polish
+   =============================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* Hide Install App button */
+  .InstallApp {
+    display: none;
+  }
+
+  /* Ensure profile icon is visible */
+  .profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
